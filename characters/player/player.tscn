@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://drav67vmfkj70"]
+
+[ext_resource type="Script" path="res://characters/player/Player.gd" id="1_xrahn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ueu0r"]
+load_path = "res://.godot/imported/priest1_v1_1.png-2f46e3a13352e942742bf1e310729732.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xsnl5"]
+load_path = "res://.godot/imported/priest1_v1_2.png-eae70f4cb15af5e15dd6f2f196a92e64.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5f8o3"]
+load_path = "res://.godot/imported/priest1_v1_3.png-50e5394c4fb50495131541d3913a97c9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1vjk"]
+load_path = "res://.godot/imported/priest1_v1_4.png-1d83155055e1b222502e8367c7d6ba6b.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_katu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_ueu0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_xsnl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_5f8o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_e1vjk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fcud"]
+size = Vector2(16, 14)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_xrahn")
+
+[node name="moveAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_katu8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7fcud")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
