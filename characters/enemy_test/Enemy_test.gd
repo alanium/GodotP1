@@ -15,12 +15,13 @@ func _process(delta):
 		var player = get_node("/root/World/Player")
 		var direction = (player.global_position - global_position).normalized() 
 		var distance = global_position.distance_to(player.global_position)
-		
-		# Si la distancia entre el enemigo y el jugador es menor que cierto valor, alejar al enemigo del jugador
-		if distance < 85:  # Ajusta este valor según lo que funcione mejor para tu juego
+	
+		if distance < 90:
 			velocity = -direction * speed  # Moverse en dirección opuesta al jugador
-		else:
+		elif distance > 95:
 			velocity = direction * speed  # Moverse hacia el jugador
+		else:
+			velocity = Vector2.ZERO
 
 		move_and_slide()
 
