@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://btq8cjgdvuyos"]
+
+[ext_resource type="Texture2D" uid="uid://cpc2wwuvmccws" path="res://characters/enemy_test/iddle (1).png" id="1_75gos"]
+[ext_resource type="Script" path="res://characters/enemy_test/Enemy_test.gd" id="1_l463f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4magv"]
+radius = 116.071
+
+[node name="Enemy_test" type="CharacterBody2D"]
+script = ExtResource("1_l463f")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_75gos")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(-4, -2)
+scale = Vector2(1, 1)
+
+[node name="Area" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0.499999, -0.5)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_4magv")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
