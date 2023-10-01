@@ -44,7 +44,7 @@ func _physics_process(delta):
 	var direccion = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var multiplicador = 1.0
 	
-	if Input.is_key_pressed(KEY_SHIFT):
+	if Input.is_key_pressed(KEY_SHIFT) and direccion:
 		rechargeCooldownTimer = rechargeTimer	
 
 	if Input.is_key_pressed(KEY_SHIFT) and stamina > 0 and direccion:
