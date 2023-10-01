@@ -16,7 +16,6 @@ var stamina : float = maxStamina  # Usamos float para permitir valores decimales
 
 var healthLabel : Label
 var staminaLabel : Label
-var speedLabel : Label 
 
 var isRecharging : bool = false
 var rechargeTimer : float = 3.0
@@ -28,7 +27,6 @@ func _ready():
 	# Obtén las referencias a las etiquetas en la escena
 	healthLabel = $HealthLabel
 	staminaLabel = $StaminaLabel
-	speedLabel = $SpeedLabel
 	
 	# Actualiza los valores iniciales de las etiquetas
 	updateHealthLabel()
@@ -60,12 +58,6 @@ func _physics_process(delta):
 		if stamina > maxStamina:
 			stamina = maxStamina
 			isRecharging = false  # Detiene la recarga cuando la stamina está llena
-
-		
-
-	var velocidadJugador = SPEED * multiplicador
-	speedLabel.text = "Speed: " + str(round(velocidadJugador))  # Actualiza el texto del Label con la velocidad del jugador
-		
 	
 	if direccion.length() > 0:
 		$moveAnimatedSprite.play()
@@ -95,5 +87,6 @@ func updateHealthLabel():
 func updateStaminaLabel():
 	# Actualiza el texto de la etiqueta de stamina
 	staminaLabel.text = "Stamina: " + str(round(stamina)) + "/" + str(maxStamina)
+	
 
 
